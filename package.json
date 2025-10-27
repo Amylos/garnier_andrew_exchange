@@ -1,0 +1,20 @@
+{
+  "name": "exchange",
+  "version": "1.0.0",
+  "description": "CI / CID course with Live Campus",
+  "homepage": "https://github.com/Amylos/garnier_andrew_exchange#readme",
+  "bugs": {
+    "url": "https://github.com/Amylos/garnier_andrew_exchange/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amylos/garnier_andrew_exchange.git"
+  },
+  "license": "ISC",
+  "author": "Garnier Andrew",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
