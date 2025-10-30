@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Result</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <style>
+    * {
+      font-family: Arial, sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .table-container {
+      max-width: 700px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    .table th {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .btn-back {
+      display: block;
+      margin: 40px auto 0;
+      width: fit-content;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      padding: 40px;
+    }
+  </style>
+
+  <body>
+    <div class="container text-center">
+      <h1 class="mb-4 text-primary">Change Given by the Cash Register</h1>
+
+      <div class="table-container">
+        <table
+          class="table table-bordered table-striped align-middle shadow-sm"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Coin / Bill (€)</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              const imageMap = {
+                "0point01": "/images/1centime-removebg-preview.png",
+                "0point02": "/images/2centimes-removebg-preview.png",
+                "0point05": "/images/5centimes-removebg-preview.png",
+                "0point10": "/images/10centimes-removebg-preview.png",
+                "0point20": "/images/20centimes-removebg-preview.png",
+                "0point50": "/images/50centimes-removebg-preview.png",
+                "1": "/images/1euros-removebg-preview.png",
+                "2": "/images/2euros-removebg-preview.png",
+                "5": "/images/5euros-removebg-preview.png",
+                "10": "/images/10euros-removebg-preview.png",
+                "20": "/images/20euros-removebg-preview.png",
+                "50": "/images/50euros-removebg-preview.png",
+                "100": "/images/100euros-removebg-preview.png",
+                "200": "/images/200euros-removebg-preview.png",
+                "500": "/images/500euros-removebg-preview.png",
+              };
+            %>
+            <% for (const key in changeToGive) { %>
+              <% if (changeToGive[key] > 0) { %>
+                <% let displayKey = key.includes("point") ? key.replace("point", ".") : key; %>
+                <tr>
+                  <td>
+                    <img
+                      src="<%= imageMap[key] || '/images/default.png' %>"
+                      alt="<%= displayKey %>€"
+                      style="height: 44px; margin-right: 10px;"
+                    />
+                  </td>
+                  <td><%= changeToGive[key] %></td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <a href="/payment" class="btn btn-primary btn-back" name="backToPayment">← Back to Payment</a>
+    </div>
+  </body>
+</html>
