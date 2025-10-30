@@ -1,5 +1,5 @@
-import ExchangeSchema from "../models/ExchangeSchema.js";
-import { mapExchange } from "../utils/mapperExchange.js";
+import ExchangeSchema from "../src/models/ExchangeSchema.js";
+import { mapExchange } from "../src/utils/mapperExchange.js";
 import mongoose from "mongoose";
 
 const Exchange = mongoose.model("Exchange", ExchangeSchema);

@@ -2,7 +2,7 @@ import ExchangeService from "../services/ExchangeService.js";
 // import ExchangeSchema from "../models/ExchangeSchema.js";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { mapExchange } from "../utils/mapperExchange.js";
+import { mapExchange } from "../src/utils/mapperExchange.js";
 
 let mongoServer;
 

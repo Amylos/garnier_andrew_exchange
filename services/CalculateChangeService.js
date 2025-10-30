@@ -1,5 +1,5 @@
 import ExchangeService from "./ExchangeService.js";
-import { mapExchange } from "../utils/mapperExchange.js";
+import { mapExchange } from "../src/utils/mapperExchange.js";
 
 /**
  * Service pour calculer le rendu de monnaie au client

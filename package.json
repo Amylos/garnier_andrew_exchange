@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
-    "start": "nodemon server.js",
-    "test:e2e": "npx cypress open"
+    "start": "nodemon src/server.js",
+    "test:e2e": "npx cypress open",
+    "build": "npx terser src/index.js -o index.min.js -c -m"
   },
   "type": "module",
   "keywords": [],
@@ -24,6 +25,7 @@
     "cross-env": "^10.1.0",
     "jest": "^30.2.0",
     "mongodb-memory-server": "^10.2.3",
-    "supertest": "^7.1.4"
+    "supertest": "^7.1.4",
+    "terser": "^5.44.0"
   }
 }

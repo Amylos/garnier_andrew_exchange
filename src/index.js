@@ -2,9 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { connectDb } from "./config/db.js";
-import ExchangeService from "./services/ExchangeService.js";
+import ExchangeService from "../services/ExchangeService.js";
 import ClientWallet from "./models/ClientWalletSchema.js";
-import CalculateChangeService from "./services/CalculateChangeService.js";
+import CalculateChangeService from "../services/CalculateChangeService.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -14,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("assets"));
 
 app.set("view engine", "ejs");
-
+app.set("views", path.join(__dirname, "views"));
 
 // CLIENT
 app.post("/api/payment", async (req, res) => {

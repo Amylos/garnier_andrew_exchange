@@ -1,6 +1,6 @@
 import app from "./index.js";
 import { connectDb } from "./config/db.js";
-import ExchangeService from "./services/ExchangeService.js";
+import ExchangeService from "../services/ExchangeService.js";
 
 await connectDb();
 await ExchangeService.createExchange();
