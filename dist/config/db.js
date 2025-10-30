@@ -1,0 +1,1 @@
+import o from"mongoose";import n from"dotenv";n.config();const c=process.env.MONGODB_URI;export async function connectDb(){try{await o.connect(c,{}),console.info("✅ MongoDB connected")}catch(o){throw console.error("❌ MongoDB connection error:",o),o}}

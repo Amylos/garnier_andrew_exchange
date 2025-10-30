@@ -6,7 +6,7 @@ await connectDb();
 await ExchangeService.createExchange();
 
 console.info(
-  `Total de la caisse actuellement : ${ExchangeService.getTotalExchange(
+  `Cash register current amount : ${ExchangeService.getTotalExchange(
     await ExchangeService.getExchange()
   )}`
 );

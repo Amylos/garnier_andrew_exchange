@@ -6,7 +6,7 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
     "start": "nodemon src/server.js",
     "test:e2e": "npx cypress open",
-    "build": "npx terser src/index.js -o index.min.js -c -m"
+  "build": "node build.js"
   },
   "type": "module",
   "keywords": [],

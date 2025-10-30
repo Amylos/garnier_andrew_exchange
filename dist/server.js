@@ -1,0 +1,1 @@
+import e from"./index.js";import{connectDb as o}from"./config/db.js";import r from"../services/ExchangeService.js";await o(),await r.createExchange(),console.info(`Cash register current amount : ${r.getTotalExchange(await r.getExchange())}`),e.listen(process.env.PORT,()=>{console.log(`✅ Server running on port ${process.env.PORT}`)});

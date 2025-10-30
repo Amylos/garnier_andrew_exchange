@@ -1,0 +1,1 @@
+import e from"mongoose";import o from"./ExchangeSchema.js";const t=new e.Schema({amount:{type:Number,required:!0},exchange:{type:o,required:!0},bigBills:{type:Boolean,default:!1}});export default e.model("ClientWallet",t);

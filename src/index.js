@@ -21,12 +21,10 @@ app.use(express.static("assets"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// CLIENT
 app.post("/api/payment", async (req, res) => {
   const { amount, exchange, bigBills } = req.body;
 
   try {
-    // 1️⃣ Calculer le rendu
     const result = await CalculateChangeService.calculateChange(
       amount,
       exchange,
@@ -37,12 +35,10 @@ app.post("/api/payment", async (req, res) => {
       return res.status(400).json(result);
     }
 
-    // 2️⃣ Mettre à jour la caisse existante
     const caisseDoc = await ExchangeService.getExchange();
     Object.assign(caisseDoc, result.updatedCaisse);
     await caisseDoc.save();
 
-    // 3️⃣ Créer une nouvelle ligne ClientWallet
     const clientWallet = new ClientWallet({
       amount,
       exchange,
@@ -50,7 +46,6 @@ app.post("/api/payment", async (req, res) => {
     });
     await clientWallet.save();
 
-    // 4️⃣ Renvoyer le rendu au client
     res.json({ success: true, changeToGive: result.changeToGive });
   } catch (err) {
     console.error(err);
