@@ -1,21 +1,25 @@
 import request from "supertest";
-import app from "../index.js";
+import app from "../src/index.js";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import ExchangeService from "../services/ExchangeService.js";
+import { describe, it, expect, beforeAll, afterAll } from "@jest/globals";
 
 let mongoServer;
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   process.env.MONGO_URI = mongoServer.getUri();
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   await ExchangeService.createExchange();
 });
 
 afterAll(async () => {
   await mongoose.disconnect();
-  await mongoServer.stop();
+  if (mongoServer) await mongoServer.stop();
 });
 
 describe("POST /api/payment", () => {

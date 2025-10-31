@@ -1,26 +1,27 @@
 import ExchangeService from "../services/ExchangeService.js";
-// import ExchangeSchema from "../models/ExchangeSchema.js";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { mapExchange } from "../src/utils/mapperExchange.js";
+import { describe, it, expect, beforeAll, afterAll } from "@jest/globals";
 
 let mongoServer;
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
-  await mongoose.connect(mongoServer.getUri());
+  await mongoose.connect(mongoServer.getUri(), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 });
 
 afterAll(async () => {
   await mongoose.disconnect();
-  await mongoServer.stop();
+  if (mongoServer) await mongoServer.stop();
 });
 
 describe("ExchangeService", () => {
   it("crée une caisse avec des valeurs initiales", async () => {
     const caisse = await ExchangeService.createExchange();
     expect(caisse).toBeDefined();
-    // Vérifie qu'il y a bien 10 billets de 10€
     expect(caisse[10]).toBe(10);
   });
 
