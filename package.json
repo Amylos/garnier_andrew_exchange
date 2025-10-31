@@ -6,7 +6,7 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
     "start": "nodemon src/server.js",
     "test:e2e": "npx cypress open",
-  "build": "node build.js"
+    "build": "node build.js"
   },
   "type": "module",
   "keywords": [],
@@ -24,8 +24,11 @@
   "devDependencies": {
     "cross-env": "^10.1.0",
     "jest": "^30.2.0",
+    "minify-all": "^1.2.2",
     "mongodb-memory-server": "^10.2.3",
+    "node-minify": "^3.6.0",
     "supertest": "^7.1.4",
-    "terser": "^5.44.0"
+    "terser": "^5.44.0",
+    "uglify-js": "^3.19.3"
   }
 }
